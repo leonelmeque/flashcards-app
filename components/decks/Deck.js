@@ -1,15 +1,47 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-
+import {View, Text, ScrollView} from 'react-native';
+import {styles} from '../shared/style';
 
 class Deck extends React.Component{
     render(){
         return(
-            <View>
+            <ScrollView style={{flex:1}}>
+                <View style={styles.deck}>
                 <Text>
-                    Deck Component!!
+                    Deck Name
+                </Text>
+                <Text>
+                    Number of cards
                 </Text>
             </View>
+            <View style={styles.deck}>
+                <Text>
+                    Deck Name
+                </Text>
+                <Text>
+                    Number of cards
+                </Text>
+            </View>
+
+            <View style={styles.deck}>
+                <Text>
+                    Deck Name
+                </Text>
+                <Text>
+                    Number of cards
+                </Text>
+            </View>
+
+            <View style={styles.deck}>
+                <Text>
+                    Deck Name
+                </Text>
+                <Text>
+                    Number of cards
+                </Text>
+            </View>
+            </ScrollView>
+            
         )
     }
 }
