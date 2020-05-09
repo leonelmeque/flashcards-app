@@ -7,16 +7,17 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { styles } from "../shared/style";
-import { saveDeckTitle } from "../../utils/utils";
+import { pushDeck } from "../../actions/decks";
+import { connect } from "react-redux";
 
 const NewDeck = (props) => {
-
-  const [deckName,handleChange] = React.useState();
+  const [deckName, handleChange] = React.useState();
 
   const handleSubmit = () => {
-    
     if (deckName) {
-     saveDeckTitle(deckName);
+      console.log(deckName);
+      props.dispatch(pushDeck(deckName));
+      props.navigation.navigate('Home')
     }
   };
 
@@ -35,7 +36,7 @@ const NewDeck = (props) => {
         value={deckName}
       />
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text>Save</Text>
+        <Text style={{ color: "white" }}>Save</Text>
       </TouchableOpacity>
     </View>
   );
@@ -57,4 +58,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default NewDeck;
+export default connect()(NewDeck);

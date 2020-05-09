@@ -7,7 +7,7 @@ import { primaryColor, textColor } from "../shared/style";
 
 const Tab = createBottomTabNavigator();
 
-export default function Navigation() {
+export default function Navigation(props) {
   return (
     <Tab.Navigator
       initialRouteName="Home"

@@ -32,8 +32,10 @@ export const styles = StyleSheet.create({
         width: 100,
         height: 50,
         padding: 10,
+        borderRadius: Platform.OS === 'ios' ? 5 : 0,
         marginVertical: 20,
-        backgroundColor:'#F2F2F2'
+        backgroundColor:'#000000',
+                
       }
 })
 

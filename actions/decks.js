@@ -1,3 +1,4 @@
+import { saveDeckTitle } from "../utils/utils";
 /**
  * Action Types
  */
@@ -22,21 +23,20 @@ export const receiveDecks = (decks) => {
 /**
  * Adding new deck to store
  */
-export const addDeck = ({ title, question }) => {
+export const addDeck = (title) => {
   return {
     type: ADD_DECK,
     title,
-    question,
   };
 };
 
 /**
  * Adding a question to deck
  */
-export const newQuestion = (id, question) => {
+export const newQuestion = (title, question) => {
   return {
     type: ADD_QUESTION,
-    id,
+    title,
     question,
   };
 };
@@ -51,8 +51,8 @@ export function pushDeck(deck) {
   };
 }
 
-export function pushQuestion(id,question){
-    return (dispatch)=>{
-        dispatch(newQuestion(id,question));
-    }
+export function pushQuestion(id, question) {
+  return (dispatch) => {
+    dispatch(newQuestion(id, question));
+  };
 }
