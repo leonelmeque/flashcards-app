@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         backgroundColor: "#FAFAFA",
         alignItems: "center",
         justifyContent: 'center',
-      
+        paddingTop:20
       },
       
       deck:{
@@ -23,13 +23,14 @@ export const styles = StyleSheet.create({
          },
          width: 350,
          height: 200,
-         margin: 20
+         marginVertical:10
+        
       },
 
       button:{
         alignItems:'center',
         justifyContent:'center',
-        width: 100,
+        width: 150,
         height: 50,
         padding: 10,
         borderRadius: Platform.OS === 'ios' ? 5 : 0,

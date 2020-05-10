@@ -17,7 +17,8 @@ const NewDeck = (props) => {
     if (deckName) {
       console.log(deckName);
       props.dispatch(pushDeck(deckName));
-      props.navigation.navigate('Home')
+      const title = deckName
+      props.navigation.navigate('Deck',title)
     }
   };
 

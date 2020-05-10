@@ -8,7 +8,10 @@ import Constants from "expo-constants";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/es/integration/react";
 import { ConfigureStore } from "./utils/store";
-
+import {
+  setLocalNotification,
+  obtainNotificationPermission,
+} from "./utils/helpers";
 
 const { persistor, store } = ConfigureStore();
 
@@ -21,8 +24,8 @@ function AppStatusBar({ backgroundColor, ...props }) {
 }
 
 class App extends React.Component {
-  componentDidMount(){
-    
+  async componentDidMount() {
+    obtainNotificationPermission();
   }
   render() {
     return (
