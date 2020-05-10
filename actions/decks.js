@@ -27,6 +27,7 @@ export const addDeck = (title) => {
   return {
     type: ADD_DECK,
     title,
+    color:"#" + Math.random().toString(16).substr(-6)
   };
 };
 

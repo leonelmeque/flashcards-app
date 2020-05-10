@@ -1,6 +1,7 @@
 export const Data = {
   React: {
     title: "React",
+    color:'#D2DEE2',
     questions: [
       {
         question: "What is React?",
@@ -14,6 +15,7 @@ export const Data = {
   },
   JavaScript: {
     title: "JavaScript",
+    color:'#C0BDC2',
     questions: [
       {
         question: "What is a closure?",

@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, View, Text, TextInput } from "react-native";
-import { styles,ContainerFluid } from "../shared/style";
+import { styles, ContainerFluid, Button } from "../shared/style";
 import { connect } from "react-redux";
 import { pushQuestion } from "../../actions/decks";
 class NewCard extends React.Component {
@@ -21,7 +21,7 @@ class NewCard extends React.Component {
   handleSave(id) {
     console.log(this.state);
     this.props.dispatch(pushQuestion(id, this.state));
-    this.props.navigation.navigate('Home')
+    this.props.navigation.navigate("Home");
   }
 
   render() {
@@ -38,7 +38,7 @@ class NewCard extends React.Component {
             borderWidth: 1,
             padding: 10,
             marginBottom: 20,
-            marginTop: 10
+            marginTop: 10,
           }}
           ref={this.inputOne}
           onChangeText={(text) => {
@@ -55,21 +55,22 @@ class NewCard extends React.Component {
             borderWidth: 1,
             padding: 10,
             marginBottom: 20,
-            marginTop: 10
+            marginTop: 10,
           }}
           onChangeText={(text) => {
             this.handleText("answer", text);
           }}
         />
 
-        <TouchableOpacity
+        <Button
+          color={"black"}
           style={styles.button}
           onPress={() => {
             this.handleSave(deck.title);
           }}
         >
           <Text style={{ color: "white" }}>Submit</Text>
-        </TouchableOpacity>
+        </Button>
       </ContainerFluid>
     );
   }

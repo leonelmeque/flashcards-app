@@ -9,8 +9,11 @@ import {
   Modal,
 } from "react-native";
 import { connect } from "react-redux";
-import { styles } from "../shared/style";
-import{clearLocalNotification,setLocalNotification} from '../../utils/helpers'
+import { styles, Button } from "../shared/style";
+import {
+  clearLocalNotification,
+  setLocalNotification,
+} from "../../utils/helpers";
 
 function Dialog(props) {
   return Alert.alert(
@@ -32,6 +35,7 @@ function Dialog(props) {
 }
 
 function ModalScore(props) {
+    
   return (
     <Modal visible={true} transparent={true} animationType="slide">
       <View
@@ -39,7 +43,6 @@ function ModalScore(props) {
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
-         
         }}
       >
         <View
@@ -59,20 +62,20 @@ function ModalScore(props) {
             elevation: 5,
           }}
         >
-
-
-        <Text>Your Score is {props.score}</Text>
-        <TouchableOpacity style={{ width: 50, margin: 10,backgroundColor:'black' }}>
-          <Text style={{color:'white'}}>Start Over </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{ width: 50, margin: 10,backgroundColor:'black' }}
-          onPress={() => {
-            props.navigation.goBack();
-          }}
-        >
-          <Text style={{color:'white'}}>Go Back To Deck </Text>
-        </TouchableOpacity>
+          <Text style={{ fontSize: 18 }}>Your Score is {props.score}</Text>
+          <Button color={"black"} onPress={()=>{props.resetQuiz();}}>
+            <Text style={{ color: "white", fontSize: 16 }}>Start Over </Text>
+          </Button>
+          <Button
+            color={"black"}
+            onPress={() => {
+              props.navigation.goBack();
+            }}
+          >
+            <Text style={{ color: "white", fontSize: 16 }}>
+              Go Back To Deck{" "}
+            </Text>
+          </Button>
         </View>
       </View>
     </Modal>
@@ -80,7 +83,6 @@ function ModalScore(props) {
 }
 
 class Quiz extends React.Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -99,9 +101,10 @@ class Quiz extends React.Component {
     }));
   }
 
-   componentDidMount(){
+  componentDidMount() {
     clearLocalNotification().then(setLocalNotification);
   }
+
 
   checkProgress() {
     const {
@@ -136,10 +139,26 @@ class Quiz extends React.Component {
     }
   }
 
+  alertMe(){
+    console.log(this.state)
+  }
+
+  resetQuiz = () => {
+    this.setState(()=>({
+      showAnswer: false,
+      points: 0,
+      correctAnswers: 0,
+      wrongAnswers: 0,
+      answeredCardsControl: [],
+      showModal: false,
+      score: 0,
+    }))
+  }
+
   render() {
     let screenWidth = Dimensions.get("window").width;
     let screenHeight = Dimensions.get("window").height;
-    console.log();
+
     const { questions, navigation } = this.props;
 
     if (questions.length === 0) {
@@ -157,6 +176,7 @@ class Quiz extends React.Component {
         </View>
       );
     }
+   
     return (
       <View style={{ flex: 1 }}>
         {this.state.showModal && (
@@ -164,54 +184,72 @@ class Quiz extends React.Component {
             style={{
               justifyContent: "center",
               alignItems: "center",
-              marginTop: 22,
+             
             }}
           >
-            <ModalScore score={this.state.score} navigation={navigation} />
+            <ModalScore score={this.state.score} navigation={navigation} resetQuiz={this.resetQuiz} />
           </View>
         )}
 
         <ScrollView pagingEnabled={true} horizontal={true} style={{ flex: 1 }}>
           {questions.map((obj, index) => {
+             
             return (
               <View
                 style={{
                   flex: 1,
-                  justifyContent: "center",
+
                   alignItems: "center",
                   padding: 20,
                   width: screenWidth,
+                  backgroundColor: "#" + Math.random().toString(16).substr(-6),
                 }}
                 key={index}
               >
-                <Text>{index + 1 + "/" + questions.length}</Text>
-                <Text>{this.state.showAnswer ? obj.answer : obj.question}</Text>
+                <Text
+                  style={{
+                    color: "white",
+                    fontSize: 30,
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  {index + 1 + "/" + questions.length}
+                </Text>
+                <Text style={{ color: "white", fontSize: 25, marginTop: 20 }}>
+                  {this.state.showAnswer ? obj.answer : obj.question}
+                </Text>
                 <TouchableOpacity
                   style={{ margin: 20 }}
                   onPress={() => this.handleShowAnswer()}
                 >
-                  <Text style={{ color: "red" }}>Show Answer</Text>
+                  <Text style={{ color: "red" }}>
+                    {" "}
+                    {this.state.showAnswer ? "Show Question" : "Show Answer"}
+                  </Text>
                 </TouchableOpacity>
-                <TouchableOpacity
+                <Button
+                  color={"black"}
                   style={styles.button}
                   onPress={() => {
                     this.updateScore("correctAnswers", index);
                   }}
                 >
                   <Text style={{ color: "white" }}>Correct Answer</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
+                </Button>
+                <Button
+                  color={"black"}
                   style={styles.button}
                   onPress={() => {
                     this.updateScore("wrongAnswers", index);
                   }}
                 >
-                  <Text style={{ color: "white" }}>Something else</Text>
-                </TouchableOpacity>
+                  <Text style={{ color: "white" }}>Incorect Answer</Text>
+                </Button>
               </View>
             );
           })}
         </ScrollView>
+        
       </View>
     );
   }
