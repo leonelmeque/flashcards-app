@@ -4,9 +4,9 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  TouchableOpacity,
+  
 } from "react-native";
-import { styles } from "../shared/style";
+import { styles,Button } from "../shared/style";
 import { pushDeck } from "../../actions/decks";
 import { connect } from "react-redux";
 
@@ -36,9 +36,9 @@ const NewDeck = (props) => {
         onChangeText={(text) => handleChange(text)}
         value={deckName}
       />
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+      <Button color={'black'} onPress={handleSubmit}>
         <Text style={{ color: "white" }}>Save</Text>
-      </TouchableOpacity>
+      </Button>
     </View>
   );
 };

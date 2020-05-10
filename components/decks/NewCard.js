@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, View, Text, TextInput } from "react-native";
-import { styles } from "../shared/style";
+import { styles,ContainerFluid } from "../shared/style";
 import { connect } from "react-redux";
 import { pushQuestion } from "../../actions/decks";
 class NewCard extends React.Component {
@@ -28,7 +28,7 @@ class NewCard extends React.Component {
     const { deck } = this.props;
 
     return (
-      <View>
+      <ContainerFluid>
         <Text>Question</Text>
         <TextInput
           style={{
@@ -37,6 +37,8 @@ class NewCard extends React.Component {
             borderColor: "gray",
             borderWidth: 1,
             padding: 10,
+            marginBottom: 20,
+            marginTop: 10
           }}
           ref={this.inputOne}
           onChangeText={(text) => {
@@ -52,6 +54,8 @@ class NewCard extends React.Component {
             borderColor: "gray",
             borderWidth: 1,
             padding: 10,
+            marginBottom: 20,
+            marginTop: 10
           }}
           onChangeText={(text) => {
             this.handleText("answer", text);
@@ -66,7 +70,7 @@ class NewCard extends React.Component {
         >
           <Text style={{ color: "white" }}>Submit</Text>
         </TouchableOpacity>
-      </View>
+      </ContainerFluid>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { styles } from "../shared/style";
+import { View, Text, TouchableOpacity } from "react-native";
+import { styles, DeckStyle, Button } from "../shared/style";
 import { connect } from "react-redux";
 
 class Deck extends React.Component {
@@ -9,28 +9,29 @@ class Deck extends React.Component {
     if (deck === null) {
       return null;
     }
+
     return (
       <View style={{ flex: 1, padding: 20 }}>
-        <Text>{deck.title}</Text>
+        <DeckStyle.Title color={"black"}>{deck.title}</DeckStyle.Title>
 
         <Text>
           {deck.questions.length === 1
             ? deck.questions.length + " Card "
             : deck.questions.length + " Cards "}
         </Text>
-        <TouchableOpacity
-          style={styles.button}
+        <Button
+          color={"black"}
           onPress={() => navigation.navigate("Add Card", deck.title)}
         >
           <Text style={{ color: "white" }}>Add Card</Text>
-        </TouchableOpacity>
+        </Button>
 
-        <TouchableOpacity
-          style={styles.button}
+        <Button
+          color={"blue"}
           onPress={() => navigation.navigate("Quiz", deck.title)}
         >
           <Text style={{ color: "white" }}>Start Quiz</Text>
-        </TouchableOpacity>
+        </Button>
       </View>
     );
   }

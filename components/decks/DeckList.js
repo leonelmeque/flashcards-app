@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { styles } from "../shared/style";
+import { styles, DeckStyle, DeckButton } from "../shared/style";
 import { connect } from "react-redux";
 
 class Deck extends React.Component {
@@ -14,19 +14,20 @@ class Deck extends React.Component {
       <ScrollView>
         <View style={styles.container}>
           {Object.values(decks).map((obj) => {
+            const color = "#" + Math.random().toString(16).substr(-6);
             return (
-              <TouchableOpacity
-                style={styles.deck}
+              <DeckButton
+                color={obj.color ? obj.color : color}
                 key={obj.title}
                 onPress={() => navigation.navigate("Deck", obj.title)}
               >
-                <Text>{obj.title}</Text>
-                <Text>
+                <DeckStyle.Title color={"white"}>{obj.title}</DeckStyle.Title>
+                <DeckStyle.SubTitle color={"white"}>
                   {obj.questions.length === 1
                     ? obj.questions.length + " Card "
                     : obj.questions.length + " Cards "}
-                </Text>
-              </TouchableOpacity>
+                </DeckStyle.SubTitle>
+              </DeckButton>
             );
           })}
         </View>

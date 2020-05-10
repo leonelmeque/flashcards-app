@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add redux-persist
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add styled-components
 
 PATH: 
   C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\Developer\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\Developer\AppData\Local\Programs\Python\Python38-32\;C:\Users\Developer\AppData\Local\Microsoft\WindowsApps;C:\Users\Developer\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Developer\AppData\Roaming\npm;C:\Users\Developer\AppData\Local\Yarn\bin;C:\Program Files\MongoDB\Server\4.0\bin;
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\Developer\Documents\Development Projects\Udacity\React\flashcards-app\node_modules\@babel\compat-data\node_modules\.bin'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Developer\Documents\Development Projects\Udacity\React\flashcards-app\node_modules\@react-native-community\push-notification-ios\android'
 
 npm manifest: 
   {
@@ -34,6 +34,8 @@ npm manifest:
       "@react-navigation/stack": "^5.2.19",
       "expo": "~37.0.3",
       "expo-constants": "~9.0.0",
+      "expo-notifications": "~0.1.1",
+      "expo-permissions": "^8.1.0",
       "react": "~16.9.0",
       "react-dom": "~16.9.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
@@ -44,6 +46,8 @@ npm manifest:
       "react-native-web": "~0.11.7",
       "react-redux": "^7.2.0",
       "redux": "^4.0.5",
+      "redux-logger": "^3.0.6",
+      "redux-persist": "^6.0.0",
       "redux-thunk": "^2.3.0"
     },
     "devDependencies": {
@@ -1636,6 +1640,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/badgin/-/badgin-1.1.4.tgz#5a8e2b81e812d3c4af7bacc2e62b36a9a5e40de5"
     integrity sha512-BQ1m7TA7IehXb3/9b3cNH6TwIKcdqqJa/E4Z4fO40tSs6HPZWopPvx9QgHeUEd6Aays1BxQXjBpO+yrSYuRSOw==
   
+  badgin@^1.1.5:
+    version "1.1.5"
+    resolved "https://registry.yarnpkg.com/badgin/-/badgin-1.1.5.tgz#9038c5f3515226fadb39c1170fd749492820a1e8"
+    integrity sha512-pQw3iDLDCSy/hZ0VJUuwaqtvVNhx8uMHLwXIeWhRRO8ftMUQjGsQdLsitpvu73q9fGaPGcXI1fWb4f5/Vbf6/Q==
+  
   balanced-match@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
@@ -2177,6 +2186,11 @@ Lockfile:
     dependencies:
       is-obj "^1.0.0"
   
+  deep-diff@^0.3.5:
+    version "0.3.8"
+    resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.8.tgz#c01de63efb0eec9798801d40c7e0dae25b582c84"
+    integrity sha1-wB3mPvsO7JeYgB1Ax+Da4ltYLIQ=
+  
   deepmerge@^3.2.0:
     version "3.3.0"
     resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-3.3.0.tgz#d3c47fd6f3a93d517b14426b0628a17b0125f5f7"
@@ -2376,6 +2390,11 @@ Lockfile:
       snapdragon "^0.8.1"
       to-regex "^3.0.1"
   
+  expo-application@~2.1.1:
+    version "2.1.1"
+    resolved "https://registry.yarnpkg.com/expo-application/-/expo-application-2.1.1.tgz#7cd61ccc53d7a0c85c8aac64b5ea59b20a1cb803"
+    integrity sha512-iq24Zgd4EmbFakHL2saVdA2zexhRX80RSbAtrWrp3BaVDd7yFNAtcwjW4r1Oyhm00YEREWp70sTaXrWs6jKHQA==
+  
   expo-asset@~8.1.4:
     version "8.1.4"
     resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-8.1.4.tgz#5265c28c1c279b2f9779269195bec4caf250ba5d"
@@ -2387,7 +2406,7 @@ Lockfile:
       path-browserify "^1.0.0"
       url-parse "^1.4.4"
   
-  expo-constants@~9.0.0:
+  expo-constants@<10.0.0, expo-constants@~9.0.0:
     version "9.0.0"
     resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-9.0.0.tgz#35c600079ee91d38fe4f56375caae6e90f122fdd"
     integrity sha512-1kqZMM8Ez5JT3sTEx8I69fP6NYFLOJjeM6Z63dD/m2NiwvzSADiO5+BhghnWNGN1L3bxbgOjXS6EHtS7CdSfxA==
@@ -2429,7 +2448,17 @@ Lockfile:
     dependencies:
       invariant "^2.2.4"
   
-  expo-permissions@~8.1.0:
+  expo-notifications@~0.1.1:
+    version "0.1.7"
+    resolved "https://registry.yarnpkg.com/expo-notifications/-/expo-notifications-0.1.7.tgz#a0a62376f4271f7cd1403c22749af0bb0d338ad1"
+    integrity sha512-yWGoCWQjQMVSMIsbhwR9pq/voAMTCgof+A7swV5uQM0X0WcfkqJMsB6Y5XMksdpkm+vEhvxRFyw0NXDso6pcjg==
+    dependencies:
+      badgin "^1.1.5"
+      expo-application "~2.1.1"
+      expo-constants "<10.0.0"
+      uuid "^3.4.0"
+  
+  expo-permissions@^8.1.0, expo-permissions@~8.1.0:
     version "8.1.0"
     resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-8.1.0.tgz#a7f2ee91ba76ce3a467e7b10adaa9ca5201b226f"
     integrity sha512-QBHD+1J9+sGFnhoEGzMRchPweeEE0OJ9ehG/0l1BMRBA7qsLS9vRC1FTJ55NwjI0Kr4RTha9r6ZX1kZHT09f/w==
@@ -4562,6 +4591,18 @@ Lockfile:
       safe-buffer "~5.1.1"
       string_decoder "~1.1.1"
       util-deprecate "~1.0.1"
+  
+  redux-logger@^3.0.6:
+    version "3.0.6"
+    resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
+    integrity sha1-91VZZvMJjzyIYExEnPC69XeCdL8=
+    dependencies:
+      deep-diff "^0.3.5"
+  
+  redux-persist@^6.0.0:
+    version "6.0.0"
+    resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-6.0.0.tgz#b4d2972f9859597c130d40d4b146fecdab51b3a8"
+    integrity sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==
   
   redux-thunk@^2.3.0:
     version "2.3.0"

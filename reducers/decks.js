@@ -14,6 +14,7 @@ export default function decks(state = {}, action) {
         [action.title]: {
           title: action.title,
           questions: [],
+          color : '#'+Math.random().toString(16).substr(-6)
         },
       };
     case ADD_QUESTION:
