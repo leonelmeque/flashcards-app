@@ -2,8 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Container, Title, Paragraph } from "../shared/style";
 
-export default class About extends React.Component {
-  render() {
+export default function About()  {
     return (
       <Container>
         <Title>About</Title>
@@ -11,5 +10,5 @@ export default class About extends React.Component {
         <Text>For a project a Udacity React Native Project!</Text>
       </Container>
     );
-  }
+  
 }
