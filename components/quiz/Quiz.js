@@ -102,7 +102,7 @@ class Quiz extends React.Component {
   }
 
   componentDidMount() {
-    clearLocalNotification().then(setLocalNotification);
+   
   }
 
 
@@ -120,7 +120,9 @@ class Quiz extends React.Component {
         score: ((correctAnswers / questions.length) * 100).toFixed(2),
         showModal: !showModal,
       }));
+      clearLocalNotification().then(()=>setLocalNotification());
     }
+    
   }
 
   updateScore(value, index) {

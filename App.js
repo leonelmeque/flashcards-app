@@ -25,7 +25,7 @@ function AppStatusBar({ backgroundColor, ...props }) {
 
 class App extends React.Component {
   async componentDidMount() {
-    obtainNotificationPermission();
+    obtainNotificationPermission().then(()=>setLocalNotification());
   }
   render() {
     return (
