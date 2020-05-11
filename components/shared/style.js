@@ -44,7 +44,7 @@ export const DeckButton = styled.TouchableOpacity`
   background-color: ${(props) => props.color};
   shadow-offset: {
     height: 5;
-  }
+  };
   width: 350px;
   height: 200px;
   margin-vertical: 10px;

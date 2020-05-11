@@ -21,7 +21,7 @@ class NewCard extends React.Component {
   handleSave(id) {
     console.log(this.state);
     this.props.dispatch(pushQuestion(id, this.state));
-    this.props.navigation.navigate("Home");
+    this.props.navigation.goBack("Deck");
   }
 
   render() {
