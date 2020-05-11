@@ -24,7 +24,7 @@ export function HomeStack() {
 class Home extends React.Component {
   componentDidMount() {
     //_clearStorage();
-    //persistStore(this.props).purge();
+  persistStore(this.props).purge();
     if (this.props.appData === true) {
       this.props.dispatch(initializeData());
     }

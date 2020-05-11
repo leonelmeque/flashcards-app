@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 class Deck extends React.Component {
   render() {
     const { deck, navigation } = this.props;
-    if (deck === null) {
+    if (!deck) {
       return null;
     }
 

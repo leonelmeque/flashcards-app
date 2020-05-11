@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, SafeAreaView } from "react-native";
+import Constants from 'expo-constants';
 import { styles, DeckStyle, DeckButton } from "../shared/style";
 import { connect } from "react-redux";
 
@@ -10,7 +11,9 @@ class Deck extends React.Component {
     if (decks === null) {
       return;
     }
-    return (
+  
+
+return (
       <ScrollView>
         <View style={styles.container}>
           {Object.values(decks).map((obj) => {
